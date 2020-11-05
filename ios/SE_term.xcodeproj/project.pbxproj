@@ -16,9 +16,10 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* SE_termTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SE_termTests.m */; };
+		467A8BB7F588E21DFC3362D9 /* libPods-SE_term.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DFDC56D203A8F8EEEE2A00 /* libPods-SE_term.a */; };
 		5D103F29097885CF494A5930 /* libPods-SE_term-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B75C3644227594E181BC6D4D /* libPods-SE_term-tvOSTests.a */; };
-		67D2DCB5DCAF7F4D6997254C /* libPods-SE_term.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DFDC56D203A8F8EEEE2A00 /* libPods-SE_term.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		B791D7B82554898F00C0B63E /* NMapsMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B791D7B72554898F00C0B63E /* NMapsMap.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		F097F0B88A1510DFA782CB81 /* libPods-SE_term-SE_termTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C6613BEE0E233A2B1DBD03 /* libPods-SE_term-SE_termTests.a */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,8 @@
 		8A26BE9C238BB134A0969812 /* Pods-SE_term.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SE_term.release.xcconfig"; path = "Target Support Files/Pods-SE_term/Pods-SE_term.release.xcconfig"; sourceTree = "<group>"; };
 		A44AE0EA66140AD14389B129 /* Pods-SE_term-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SE_term-tvOS.release.xcconfig"; path = "Target Support Files/Pods-SE_term-tvOS/Pods-SE_term-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		B75C3644227594E181BC6D4D /* libPods-SE_term-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SE_term-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B791D7B52554894900C0B63E /* libreact-native-nmap.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libreact-native-nmap.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B791D7B72554898F00C0B63E /* NMapsMap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NMapsMap.framework; path = Pods/NMapsMap/framework/NMapsMap.framework; sourceTree = "<group>"; };
 		C2C6613BEE0E233A2B1DBD03 /* libPods-SE_term-SE_termTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SE_term-SE_termTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB17AE87C4A547CD730881A0 /* Pods-SE_term-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SE_term-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-SE_term-tvOSTests/Pods-SE_term-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -82,7 +85,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67D2DCB5DCAF7F4D6997254C /* libPods-SE_term.a in Frameworks */,
+				B791D7B82554898F00C0B63E /* NMapsMap.framework in Frameworks */,
+				467A8BB7F588E21DFC3362D9 /* libPods-SE_term.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +143,8 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B791D7B72554898F00C0B63E /* NMapsMap.framework */,
+				B791D7B52554894900C0B63E /* libreact-native-nmap.a */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				84DFDC56D203A8F8EEEE2A00 /* libPods-SE_term.a */,
@@ -194,7 +200,6 @@
 				312A8D88CC93C0BAAE755710 /* Pods-SE_term-tvOSTests.debug.xcconfig */,
 				DB17AE87C4A547CD730881A0 /* Pods-SE_term-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -210,6 +215,7 @@
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
 				2730514D93C9167D2FBE4DBA /* [CP] Copy Pods Resources */,
+				DB570EE1EC2B49B3F7859D3E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -232,6 +238,7 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				6830F616895DE3B2209F7925 /* [CP] Copy Pods Resources */,
+				7D2B2FB067D65CB448EC8F5F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -515,6 +522,42 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SE_term/Pods-SE_term-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		7D2B2FB067D65CB448EC8F5F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SE_term/Pods-SE_term-frameworks.sh",
+				"${PODS_ROOT}/NMapsMap/framework/NMapsMap.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NMapsMap.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SE_term/Pods-SE_term-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DB570EE1EC2B49B3F7859D3E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SE_term-SE_termTests/Pods-SE_term-SE_termTests-frameworks.sh",
+				"${PODS_ROOT}/NMapsMap/framework/NMapsMap.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NMapsMap.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SE_term-SE_termTests/Pods-SE_term-SE_termTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -657,6 +700,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/NMapsMap/framework",
+				);
 				INFOPLIST_FILE = SE_term/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -679,6 +726,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/NMapsMap/framework",
+				);
 				INFOPLIST_FILE = SE_term/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
