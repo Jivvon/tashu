@@ -36,9 +36,19 @@ async function appInit({setLocation}) {
         error => {
             console.log(error);
         }
-    );
-};
-
+        );
+    };
+    
+const HomeScreen = () =>
+    <Tab.Navigator>
+        <Tab.Screen name={"map"} component={MapViewScreen}/>
+        <Tab.Screen name={"text"} component={TextScreen}/>
+    </Tab.Navigator>
+    
+const TextScreen = () => {
+    return <Text>text</Text>
+} 
+    
 const App = () => {
     const [location, setLocation] = useState();
     useEffect(() => {
@@ -52,16 +62,6 @@ const App = () => {
         </Stack.Navigator>
     </NavigationContainer>
 }
- 
-const HomeScreen = () =>
-    <Tab.Navigator>
-        <Tab.Screen name={"map"} component={MapViewScreen}/>
-        <Tab.Screen name={"text"} component={TextScreen}/>
-    </Tab.Navigator>
- 
-const TextScreen = () => {
-    return <Text>text</Text>
-} 
  
 const AppProvider = () => {
     return (
