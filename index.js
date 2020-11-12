@@ -1,9 +1,14 @@
-/**
- * @format
- */
+const { Platform } = require('react-native');
 
-import {AppRegistry} from 'react-native';
-import App from './App';
-import {name as appName} from './app.json';
+// Intl polyfill
+// Needed only on Android when using Hermes since it doesn't yet
+// support Intl. Issue tracking support: https://github.com/facebook/hermes/issues/23.
+// On iOS the minimum version is 10 which has Intl support (https://caniuse.com/#feat=mdn-javascript_builtins_intl).
 
-AppRegistry.registerComponent(appName, () => App);
+// if (Platform.OS === 'android' && !global.Intl) {
+//   global.Intl = require('intl/lib/core');
+//   global.IntlPolyfill = global.Intl;
+//   require('intl/locale-data/jsonp/en');
+// }
+
+require('./src/index.ts');

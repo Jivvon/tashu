@@ -33,6 +33,7 @@
     "@types/react-native": "^0.63.34",
     "@types/styled-components": "^5.1.4",
     "babel-jest": "^26.6.3",
+    "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-root-import": "^6.6.0",
     "eslint": "^7.12.1",
     "jest": "^26.6.3",
