@@ -12,7 +12,10 @@ public class Station {
      *     "address": gu + dong,
      *     "name": name,
      *     "kiosk_no": kiosk_no,
-     *     "location": [lat, lng],
+     *     "location": {
+     *         latitude: lat,
+     *         longitude: lng,
+     *     },
      *     "bikes": {
      *         "cntRentable": cntRentable,
      *         "cntLockOff": cntLockOff,
@@ -47,9 +50,9 @@ public class Station {
             JSONObject raw_station = (JSONObject) o;
             JSONObject station = new JSONObject();
             String address = raw_station.get("gu").toString() + raw_station.get("dong").toString();
-            JSONArray location = new JSONArray();
-            location.add(raw_station.get("lat").toString()); // 위도
-            location.add(raw_station.get("lng").toString()); // 경도
+            JSONObject location = new JSONObject();
+            location.put("latitude", raw_station.get("lat")); // 위도
+            location.put("longitude", raw_station.get("lng")); // 경도
             JSONObject bikes = new JSONObject();
             bikes.put("cntRentable", raw_station.get("cntRentable"));
             bikes.put("cntLockOff", raw_station.get("cntLockOff"));
