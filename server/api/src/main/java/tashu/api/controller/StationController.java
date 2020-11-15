@@ -1,14 +1,11 @@
 package tashu.api.controller;
 
-import org.json.simple.JSONObject;
 import org.springframework.web.bind.annotation.*;
 import tashu.api.service.StationService;
 
 @RestController
 @RequestMapping("/station")
 public class StationController {
-
-    private JSONObject stationInfo;
 
     @ResponseBody
     @GetMapping(value = "")
