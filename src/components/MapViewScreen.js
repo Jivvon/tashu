@@ -22,14 +22,13 @@ const MapViewScreen = ({navigation}) => {
                       onCameraChange={e => console.warn('onCameraChange', JSON.stringify(e))}
                       onMapClick={e => console.warn('onMapClick', JSON.stringify(e))}
                       useTextureView>
-            {stations.map(function (station, index) {
-                const location = station.location.map(x => +x)
-                const location_coor = {
-                    latitude: location[0],
-                    longitude: location[1]
+            {stations.map((station) => {
+                station.location = {
+                    latitude: +station.location["latitude"],
+                    longitude: +station.location["longitude"]
                 };
 
-                return <Marker key={index} coordinate={location_coor} pinColor="blue" onClick={() => console.warn(`click index ${index}`)}></Marker>;
+                return <Marker key={station.kiosk_no} coordinate={station.location} pinColor="blue" onClick={() => console.warn(`click index ${station.kiosk_no}`)}></Marker>;
             })}
             
             <Marker coordinate={CNU_center} pinColor="red" onClick={() => console.warn('CNU center')}/>
