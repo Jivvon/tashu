@@ -1,11 +1,12 @@
 import React, { Component, useEffect, useState } from 'react';
-import {PermissionsAndroid, Platform, Text, TouchableOpacity, View} from "react-native";
+import {PermissionsAndroid, Platform, Text, TouchableOpacity, View, Button, StyleSheet} from "react-native";
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import Geolocation from "react-native-geolocation-service"
+import Geolocation from "react-native-geolocation-service";
 
 import MapViewScreen from "./components/MapViewScreen.js";
+import ModalView from "./components/modal.js";
 
 async function requestPermission(){
     try{
@@ -43,6 +44,7 @@ const HomeScreen = () =>
     <Tab.Navigator>
         <Tab.Screen name={"map"} component={MapViewScreen}/>
         <Tab.Screen name={"text"} component={TextScreen}/>
+        <Tab.Screen name={"modal"} component={ModalView}/>
     </Tab.Navigator>
     
 const TextScreen = () => {
