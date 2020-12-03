@@ -6,7 +6,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Geolocation from "react-native-geolocation-service";
 
 import MapViewScreen from "./components/MapViewScreen.js";
-import ModalView from "./components/modal.js";
+import ModalView from "./components/MarkerModal.js";
 
 async function requestPermission(){
     try{
