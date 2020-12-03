@@ -34,7 +34,8 @@ const MapViewScreen = ({ navigation }) => {
             modalProps={modalProps}
             setStart={setStart}
             setDestination={setDestination}
-            toggleModal={toggleModal}></ModalView>
+            toggleModal={toggleModal}
+            ></ModalView>
         <NaverMapView style={{width: '100%', height: '100%'}}
                       showsMyLocationButton={true}
                       center={{...CNU_center, zoom: 16}}
