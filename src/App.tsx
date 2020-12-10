@@ -4,6 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import Geolocation from "react-native-geolocation-service";
+import SplashScreen from "react-native-splash-screen";
 
 import MapViewScreen from "./components/MapViewScreen.js";
 import ModalView from "./components/MarkerModal.js";
@@ -53,6 +54,7 @@ const TextScreen = () => {
 const App = () => {
     const [location, setLocation] = useState();
     useEffect(() => {
+        SplashScreen.hide();
         appInit({setLocation});
     }, []);
 
