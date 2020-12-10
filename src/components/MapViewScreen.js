@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Text, TouchableOpacity, View } from "react-native";
 import NaverMapView, { Marker } from 'react-native-nmap';
-import { stations } from 'stations.json';
+// import { stationsJson } from 'stations.json';
 import ModalView from './MarkerModal';
-import { openNaverMapApp, requestLocationPermission } from '../utils'
+import { useBeforeFirstRender ,openNaverMapApp, requestLocationPermission } from '../utils'
 
 const MapViewScreen = ({ navigation }) => {
     const [modalVisible, setModalVisible] = useState(false);
@@ -14,11 +14,30 @@ const MapViewScreen = ({ navigation }) => {
         if (station) await setModalProps(station);
         await setModalVisible(!modalVisible);
     }
-    const CNU_center = {latitude: 36.362178, longitude: 127.344742}
+    const CNU_center = { latitude: 36.362178, longitude: 127.344742 }
+    const [stations, setStations] = useState([]);
+    const [showMarkers, setShowMarkers] = useState(false);
+    
+    function getStationData() {
+        const TASHU_STATION_URL = "http://localhost:8080/station";
+        
+        fetch(TASHU_STATION_URL)
+            .then(res => res.json())
+            .then(data => {
+                setStations(data);
+            }).then(() => {
+                setShowMarkers(true);
+            })
+    }
+
+    useBeforeFirstRender(() => {
+        getStationData();
+    })
     
     useEffect(() => {
         requestLocationPermission();
     }, []);
+    
     useEffect(() => {
         // TODO: url 출발 도착으로 수정
         if (start && destination) {
@@ -33,22 +52,22 @@ const MapViewScreen = ({ navigation }) => {
             openNaverMapApp(url);
         }
     }, [start, destination])
-
+    
     const stationMarkers = stations.map((station) => {
-        station.location = {
-            latitude: +station.location["latitude"],
-            longitude: +station.location["longitude"]
-        };
-
-        return (
-            <TouchableOpacity>
-                <Marker key={station.kiosk_no} coordinate={station.location} pinColor="blue"
-                    onClick={(e) => {
-                        toggleModal(station);
-                    }}></Marker>
-            </TouchableOpacity>
-        )
-    })
+            station.location = {
+                latitude: +station.location["latitude"],
+                longitude: +station.location["longitude"]
+            };
+    
+            return (
+                <TouchableOpacity>
+                    <Marker key={station.kiosk_no} coordinate={station.location} pinColor="blue"
+                        onClick={(e) => {
+                            toggleModal(station);
+                        }}></Marker>
+                </TouchableOpacity>
+            )
+        })
 
     return <>
         <ModalView modalVisible={modalVisible}
@@ -64,15 +83,15 @@ const MapViewScreen = ({ navigation }) => {
                       onCameraChange={e => console.warn('onCameraChange', JSON.stringify(e))}
                       onMapClick={e => console.warn('onMapClick', JSON.stringify(e))}
                       useTextureView>
-            {stationMarkers}
+            {showMarkers && stationMarkers}
             
             <Marker coordinate={CNU_center} pinColor="red" onClick={() => console.warn('CNU center')}/>
         </NaverMapView>
-        <TouchableOpacity style={{position: 'absolute', bottom: '10%', right: 8}} onPress={() => navigation.navigate('stack')}>
+        {/* <TouchableOpacity style={{position: 'absolute', bottom: '10%', right: 8}} onPress={() => navigation.navigate('stack')}>
             <View style={{backgroundColor: 'gray', padding: 4}}>
                 <Text style={{color: 'white'}}>open stack</Text>
             </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
     </>
 };
 

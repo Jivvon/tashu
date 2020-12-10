@@ -1,6 +1,18 @@
 import {Linking} from "react-native";
 import DeepLinking from 'react-native-deep-linking';
 import { PermissionsAndroid, Platform } from "react-native";
+import { useState, useEffect } from 'react';
+
+
+export function useBeforeFirstRender(f) {
+  const [hasRendered, setHasRendered] = useState(false)
+  useEffect(() => setHasRendered(true), [hasRendered])
+    if (!hasRendered) {
+        setTimeout(() => {
+            f()
+      }, 0)
+  }
+}
 
 export function openNaverMapApp(url) {
     const appStoreURL = "http://itunes.apple.com/app/id311867728?mt=8";
