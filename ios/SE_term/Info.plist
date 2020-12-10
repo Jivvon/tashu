@@ -4,6 +4,10 @@
 <dict>
 	<key>NMFClientId</key>
 	<string>w5jlztexlm</string>
+	<key>X-NCP-APIGW-API-KEY-ID</key>
+	<string>w5jlztexlm</string>
+	<key>X-NCP-APIGW-API-KEY</key>
+	<string>DZEcjSNfd8vCPcbEXDI68BV1hN11aq5iySt6ztL6</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>

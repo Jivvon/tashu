@@ -17,6 +17,14 @@ export function openNaverMapApp(url) {
     });
 }
 
+function callback(error, response, body) {
+    if (!error && response.statusCode == 200) {
+        console.log(body);
+    }
+}
+
+
+
 export async function requestLocationPermission() {
     if (Platform.OS !== 'android') return;
     try {

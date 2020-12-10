@@ -44,7 +44,6 @@ const HomeScreen = () =>
     <Tab.Navigator>
         <Tab.Screen name={"map"} component={MapViewScreen}/>
         <Tab.Screen name={"text"} component={TextScreen}/>
-        <Tab.Screen name={"modal"} component={ModalView}/>
     </Tab.Navigator>
     
 const TextScreen = () => {
