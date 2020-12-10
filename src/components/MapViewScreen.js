@@ -27,6 +27,8 @@ const MapViewScreen = ({ navigation }) => {
                 setStations(data);
             }).then(() => {
                 setShowMarkers(true);
+            }).catch(()=>{
+                console.error("데이터를 불러오는데 오류가 발생하였습니다")
             })
     }
 
@@ -53,7 +55,7 @@ const MapViewScreen = ({ navigation }) => {
         }
     }, [start, destination])
     
-    const stationMarkers = stations.map((station) => {
+    const stationMarkers = stations.map((station, index) => {
             station.location = {
                 latitude: +station.location["latitude"],
                 longitude: +station.location["longitude"]
@@ -61,13 +63,13 @@ const MapViewScreen = ({ navigation }) => {
     
             return (
                 <TouchableOpacity>
-                    <Marker key={station.kiosk_no} coordinate={station.location} pinColor="blue"
+                    <Marker key={index} coordinate={station.location} pinColor="blue"
                         onClick={(e) => {
                             toggleModal(station);
                         }}></Marker>
                 </TouchableOpacity>
             )
-        })
+    })
 
     return <>
         <ModalView modalVisible={modalVisible}
@@ -79,13 +81,13 @@ const MapViewScreen = ({ navigation }) => {
         <NaverMapView style={{width: '100%', height: '100%'}}
                       showsMyLocationButton={true}
                       center={{...CNU_center, zoom: 16}}
-                      onTouch={e => console.warn('onTouch', JSON.stringify(e.nativeEvent))}
-                      onCameraChange={e => console.warn('onCameraChange', JSON.stringify(e))}
-                      onMapClick={e => console.warn('onMapClick', JSON.stringify(e))}
+                    //   onTouch={e => console.warn('onTouch', JSON.stringify(e.nativeEvent))}
+                    //   onCameraChange={e => console.warn('onCameraChange', JSON.stringify(e))}
+                    //   onMapClick={e => console.warn('onMapClick', JSON.stringify(e))}
                       useTextureView>
             {showMarkers && stationMarkers}
             
-            <Marker coordinate={CNU_center} pinColor="red" onClick={() => console.warn('CNU center')}/>
+            {/* <Marker coordinate={CNU_center} pinColor="red" onClick={() => console.warn('CNU center')}/> */}
         </NaverMapView>
         {/* <TouchableOpacity style={{position: 'absolute', bottom: '10%', right: 8}} onPress={() => navigation.navigate('stack')}>
             <View style={{backgroundColor: 'gray', padding: 4}}>

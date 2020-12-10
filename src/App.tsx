@@ -7,7 +7,6 @@ import Geolocation from "react-native-geolocation-service";
 import SplashScreen from "react-native-splash-screen";
 
 import MapViewScreen from "./components/MapViewScreen.js";
-import ModalView from "./components/MarkerModal.js";
 
 async function requestPermission(){
     try{
@@ -60,7 +59,7 @@ const App = () => {
 
     return <NavigationContainer>
         <Stack.Navigator>
-            <Stack.Screen name="home" component={HomeScreen}/>
+            <Stack.Screen name="Tashu" component={HomeScreen}/>
             <Stack.Screen name="stack" component={MapViewScreen}/>
         </Stack.Navigator>
     </NavigationContainer>
