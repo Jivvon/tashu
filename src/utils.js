@@ -46,9 +46,10 @@ export function setNaverMapLink() {
 
 addQueryParam = (url, { id, value }) => {
     if (!id || !value) return '';
+    console.log(url.includes('?'), url)
     if (url.includes('?'))
-        return `$?${id}=${value}`
-    else return `$&${id}=${value}`
+        return `&${id}=${value}`
+    else return `?${id}=${value}`
 }
 
 
@@ -61,7 +62,8 @@ export function openNaverMapApp(idValueObj) {
         url += this.addQueryParam(url, { id, value })
     }
     console.log('open', url)
-    return Linking.openURL(url);
+    console.log('encoded', encodeURI(url))
+    return Linking.openURL(encodeURI(url));
 }
 
 function callback(error, response, body) {

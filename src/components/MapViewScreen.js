@@ -44,8 +44,11 @@ const MapViewScreen = ({ navigation }) => {
     }, []);
     
     useEffect(() => {
-        if (start) setText(`출발: ${start.name} ${text}`)
-        if (destination) setText(`${text} 도착: ${destination.name}`)
+        if (start && destination) setText(`출발: ${start.name}\n도착: ${destination.name}`)
+        else {
+            if (start) setText(`출발: ${start.name}`)
+            if (destination) setText(`도착: ${destination.name}`)
+        }
         if (destination) setVisibleFindRouteBtn(true)
     }, [start, destination])
     
@@ -95,8 +98,10 @@ const MapViewScreen = ({ navigation }) => {
                         const uri = {
                             slat: start?.location.latitude,
                             slng: start?.location.longitude,
+                            sname: start?.name,
                             dlat: destination.location.latitude,
                             dlng: destination.location.longitude,
+                            dname: destination.name,
                             appname: "SE_term"
                         };
                                     
