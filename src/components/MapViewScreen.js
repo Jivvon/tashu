@@ -3,7 +3,7 @@ import { Text, TouchableOpacity, View } from "react-native";
 import NaverMapView, { Marker } from 'react-native-nmap';
 // import { stationsJson } from 'stations.json';
 import ModalView from './MarkerModal';
-import { useBeforeFirstRender ,openNaverMapApp, requestLocationPermission } from '../utils'
+import { setNaverMapLink ,useBeforeFirstRender ,openNaverMapApp, requestLocationPermission } from '../utils'
 
 const MapViewScreen = ({ navigation }) => {
     const [modalVisible, setModalVisible] = useState(false);
@@ -34,26 +34,27 @@ const MapViewScreen = ({ navigation }) => {
 
     useBeforeFirstRender(() => {
         getStationData();
+        setNaverMapLink();
     })
     
     useEffect(() => {
         requestLocationPermission();
     }, []);
     
-    useEffect(() => {
-        // TODO: url 출발 도착으로 수정
-        if (start && destination) {
-            if (start == destination) {
-                setDestination();
-                return;
-            }
-            console.log(`출발 : ${start.name}, 도착: ${destination.name}`)
-            const url = "nmap://route/bicycle?slat=37.4640070&slng=126.9522394&sname=%EC%84%9C%EC%9A%B8%EB%8C%80%ED%95%99%EA%B5%90&dlat=37.5209436&dlng=127.1230074&dname=%EC%98%AC%EB%A6%BC%ED%94%BD%EA%B3%B5%EC%9B%90&appname=org.reactjs.native.example.SE-term";
-            setStart();
-            setDestination();
-            openNaverMapApp(url);
-        }
-    }, [start, destination])
+    // useEffect(() => {
+    //     // TODO: url 출발 도착으로 수정
+    //     if (start && destination) {
+    //         if (start == destination) {
+    //             setDestination();
+    //             return;
+    //         }
+    //         console.log(`출발 : ${start.name}, 도착: ${destination.name}`)
+    //         const url = "nmap://route/bicycle?slat=37.4640070&slng=126.9522394&sname=%EC%84%9C%EC%9A%B8%EB%8C%80%ED%95%99%EA%B5%90&dlat=37.5209436&dlng=127.1230074&dname=%EC%98%AC%EB%A6%BC%ED%94%BD%EA%B3%B5%EC%9B%90&appname=org.reactjs.native.example.SE-term";
+    //         setStart();
+    //         setDestination();
+    //         openNaverMapApp(url);
+    //     }
+    // }, [start, destination])
     
     const stationMarkers = stations.map((station, index) => {
             station.location = {
@@ -73,8 +74,11 @@ const MapViewScreen = ({ navigation }) => {
 
     return <>
         <ModalView modalVisible={modalVisible}
+            setModalVisible={setModalVisible}
             modalProps={modalProps}
+            start = {start}
             setStart={setStart}
+            destination = {destination}
             setDestination={setDestination}
             toggleModal={toggleModal}
             ></ModalView>

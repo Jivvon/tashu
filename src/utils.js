@@ -14,19 +14,54 @@ export function useBeforeFirstRender(f) {
   }
 }
 
-export function openNaverMapApp(url) {
-    const appStoreURL = "http://itunes.apple.com/app/id311867728?mt=8";
-    DeepLinking.addScheme('nmap://');    
-    
+handleUrl = ({ url }) => {
     Linking.canOpenURL(url).then((supported) => {
-        if (supported) {
-            DeepLinking.evaluateUrl(url);
-        } else {
-            Linking.openURL(appStoreURL);                
-        }
+      if (supported) {
+        DeepLinking.evaluateUrl(url);
+      } else {
+        const appStoreURL = "http://itunes.apple.com/app/id311867728?mt=8";
+        Linking.openURL(appStoreURL); 
+      }
     }, () => {
-            console.error(`rejected Linking.canOpenURL(${url})`)
+        console.error(`rejected Linking.canOpenURL(${url})`)
     });
+  }
+
+export function setNaverMapLink() {
+    // nmap://actionPath?parameter=value&appname={YOUR_APP_NAME}
+    DeepLinking.addScheme('nmap://');
+    Linking.addEventListener('url', this.handleUrl);
+ 
+    DeepLinking.addRoute('/route/bicycle', (response) => {
+      // example://test
+      this.setState({ response });
+    });
+ 
+    Linking.getInitialURL().then((url) => {
+      if (url) {
+        Linking.openURL(url);
+      }
+    }).catch(err => console.error('An error occurred', err));
+}
+
+addQueryParam = (url, { id, value }) => {
+    if (!id || !value) return '';
+    if (url.includes('?'))
+        return `$?${id}=${value}`
+    else return `$&${id}=${value}`
+}
+
+
+export function openNaverMapApp(idValueObj) {
+    let url = "nmap://route/bicycle";
+
+    for (const key in idValueObj) {
+        const id = `${key}`
+        const value = idValueObj[key]
+        url += this.addQueryParam(url, { id, value })
+    }
+    console.log('open', url)
+    return Linking.openURL(url);
 }
 
 function callback(error, response, body) {

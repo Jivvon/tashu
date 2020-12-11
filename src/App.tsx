@@ -58,10 +58,11 @@ const App = () => {
     }, []);
 
     return <NavigationContainer>
-        <Stack.Navigator>
+        <MapViewScreen></MapViewScreen>
+        {/* <Stack.Navigator>
             <Stack.Screen name="Tashu" component={HomeScreen}/>
             <Stack.Screen name="stack" component={MapViewScreen}/>
-        </Stack.Navigator>
+        </Stack.Navigator> */}
     </NavigationContainer>
 }
  
