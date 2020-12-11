@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Text, TouchableOpacity, TouchableHighlight, StyleSheet, View, Linking } from "react-native";
 import NaverMapView, { Marker } from 'react-native-nmap';
-// import { stationsJson } from 'stations.json';
+import { stations as stationsJson } from 'stations.json';
 import ModalView from './MarkerModal';
 import { setNaverMapLink ,useBeforeFirstRender ,openNaverMapApp, requestLocationPermission } from '../utils'
 
@@ -15,7 +15,7 @@ const MapViewScreen = ({ navigation }) => {
         await setModalVisible(!modalVisible);
     }
     const CNU_center = { latitude: 36.362178, longitude: 127.344742 }
-    const [stations, setStations] = useState([]);
+    const [stations, setStations] = useState(stationsJson);
     const [showMarkers, setShowMarkers] = useState(false);
     const [text, setText] = useState('');
     const [visibleFindRouteBtn, setVisibleFindRouteBtn] = useState(false);
@@ -35,7 +35,7 @@ const MapViewScreen = ({ navigation }) => {
     }
 
     useBeforeFirstRender(() => {
-        getStationData();
+        // getStationData();
         setNaverMapLink();
     })
     
@@ -49,7 +49,7 @@ const MapViewScreen = ({ navigation }) => {
         if (destination) setVisibleFindRouteBtn(true)
     }, [start, destination])
     
-    const stationMarkers = stations.map((station, index) => {
+    const stationMarkers = stationsJson.map((station, index) => {
             station.location = {
                 latitude: +station.location["latitude"],
                 longitude: +station.location["longitude"]
@@ -123,7 +123,7 @@ const MapViewScreen = ({ navigation }) => {
                     //   onCameraChange={e => console.warn('onCameraChange', JSON.stringify(e))}
                     //   onMapClick={e => console.warn('onMapClick', JSON.stringify(e))}
                       useTextureView>
-            {showMarkers && stationMarkers}
+            {true && stationMarkers}
             
             {/* <Marker coordinate={CNU_center} pinColor="red" onClick={() => console.warn('CNU center')}/> */}
         </NaverMapView>
