@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
         // maxHeight: "10%",
     },
     topViewBtn: {
-        width: "57%"
+        width: "54%"
     },
     absolute: {
         marginTop: 50,
