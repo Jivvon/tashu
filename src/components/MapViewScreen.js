@@ -90,8 +90,8 @@ const MapViewScreen = ({ center }) => {
                 >
                     <Text style={styles.textStyle}>일일 재대여</Text>    
                 </TouchableHighlight>
-                {/* {visibleFindRouteBtn && <TouchableHighlight */}
-                {true && <TouchableHighlight
+                {visibleFindRouteBtn && <TouchableHighlight
+                // {true && <TouchableHighlight
                     style={{ ...styles.openButton, width:"100%" }}
                     onPress={() => {
                         setVisibleFindRouteBtn(false);

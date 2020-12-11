@@ -22,7 +22,7 @@ async function requestPermission(){
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
  
-
+const CNU_center = { latitude: 36.362178, longitude: 127.344742 }
 async function appInit({setLocation}) {
     requestPermission();
     Geolocation.getCurrentPosition(
@@ -35,6 +35,7 @@ async function appInit({setLocation}) {
             });
         },
         error => {
+            setLocation({ latitude: 36.3505474, longitude: 127.3837673 }) // 대전 시청
             console.log(error);
         }
         );
