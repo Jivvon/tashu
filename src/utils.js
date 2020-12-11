@@ -28,12 +28,10 @@ handleUrl = ({ url }) => {
   }
 
 export function setNaverMapLink() {
-    // nmap://actionPath?parameter=value&appname={YOUR_APP_NAME}
     DeepLinking.addScheme('nmap://');
     Linking.addEventListener('url', this.handleUrl);
  
     DeepLinking.addRoute('/route/bicycle', (response) => {
-      // example://test
       this.setState({ response });
     });
  
@@ -65,14 +63,6 @@ export function openNaverMapApp(idValueObj) {
     console.log('encoded', encodeURI(url))
     return Linking.openURL(encodeURI(url));
 }
-
-function callback(error, response, body) {
-    if (!error && response.statusCode == 200) {
-        console.log(body);
-    }
-}
-
-
 
 export async function requestLocationPermission() {
     if (Platform.OS !== 'android') return;

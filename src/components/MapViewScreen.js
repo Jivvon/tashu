@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Text, TouchableOpacity, TouchableHighlight, StyleSheet, View, Linking } from "react-native";
 import NaverMapView, { Marker } from 'react-native-nmap';
-import { stations as stationsJson } from 'stations.json';
+import { stations as stationsJson } from 'stations.json'; // 서버 연결 안 되었을 경우 로컬 데이터 사용
 import ModalView from './MarkerModal';
 import { setNaverMapLink ,useBeforeFirstRender ,openNaverMapApp, requestLocationPermission } from '../utils'
 
@@ -14,7 +14,6 @@ const MapViewScreen = ({ center }) => {
         if (station) await setModalProps(station);
         await setModalVisible(!modalVisible);
     }
-    const CNU_center = { latitude: 36.362178, longitude: 127.344742 }
     const [stations, setStations] = useState(stationsJson);
     const [showMarkers, setShowMarkers] = useState(false);
     const [text, setText] = useState('');
@@ -27,15 +26,16 @@ const MapViewScreen = ({ center }) => {
             .then(res => res.json())
             .then(data => {
                 setStations(data);
-            }).then(() => {
-                setShowMarkers(true);
             }).catch(()=>{
-                console.error("데이터를 불러오는데 오류가 발생하였습니다")
+                console.error("서버를 찾을 수 없습니다. 기존 데이터로 대체합니다.")
+                setStations(stationsJson);
+            }).finally(() => {
+                setShowMarkers(true);
             })
     }
 
     useBeforeFirstRender(() => {
-        // getStationData();
+        getStationData();
         setNaverMapLink();
     })
     
@@ -52,7 +52,7 @@ const MapViewScreen = ({ center }) => {
         if (destination) setVisibleFindRouteBtn(true)
     }, [start, destination])
     
-    const stationMarkers = stationsJson.map((station, index) => {
+    const stationMarkers = stations.map((station, index) => {
             station.location = {
                 latitude: +station.location["latitude"],
                 longitude: +station.location["longitude"]
@@ -91,7 +91,6 @@ const MapViewScreen = ({ center }) => {
                     <Text style={styles.textStyle}>일일 재대여</Text>    
                 </TouchableHighlight>
                 {visibleFindRouteBtn && <TouchableHighlight
-                // {true && <TouchableHighlight
                     style={{ ...styles.openButton, width:"100%" }}
                     onPress={() => {
                         setVisibleFindRouteBtn(false);
@@ -115,28 +114,16 @@ const MapViewScreen = ({ center }) => {
         <ModalView modalVisible={modalVisible}
             setModalVisible={setModalVisible}
             modalProps={modalProps}
-            start = {start}
             setStart={setStart}
-            destination = {destination}
             setDestination={setDestination}
             toggleModal={toggleModal}
             ></ModalView>
         <NaverMapView style={{width: '100%', height: '100%'}}
                       showsMyLocationButton={true}
                       center={{...center, zoom: 16}}
-                    //   onTouch={e => console.warn('onTouch', JSON.stringify(e.nativeEvent))}
-                    //   onCameraChange={e => console.warn('onCameraChange', JSON.stringify(e))}
-                    //   onMapClick={e => console.warn('onMapClick', JSON.stringify(e))}
                       useTextureView>
-            {true && stationMarkers}
-            
-            {/* <Marker coordinate={CNU_center} pinColor="red" onClick={() => console.warn('CNU center')}/> */}
+            {showMarkers && stationMarkers}
         </NaverMapView>
-        {/* <TouchableOpacity style={{position: 'absolute', bottom: '10%', right: 8}} onPress={() => navigation.navigate('stack')}>
-            <View style={{backgroundColor: 'gray', padding: 4}}>
-                <Text style={{color: 'white'}}>open stack</Text>
-            </View>
-        </TouchableOpacity> */}
     </>
 };
 

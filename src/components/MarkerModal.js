@@ -4,21 +4,19 @@ import {
   StyleSheet,
   Text,
   TouchableHighlight,
-  View,
-  Linking
+  View
 } from "react-native";
 
-import { openNaverMapApp } from '../utils'
 /**
  * TODO: 레이아웃, 디자인 수정
  */
 const ModalView = (props) => {
-  const { modalVisible, setModalVisible, modalProps, start, setStart, destination, setDestination, toggleModal } = props;
+  const { modalVisible, setModalVisible, modalProps, setStart, setDestination, toggleModal } = props;
   let content = '';
   if (modalProps) {
     content = `주소: ${modalProps.address}\n
-${modalProps.name}\n
-${modalProps.bikes.cntRentable} / ${modalProps.bikes.cntRackTotal}`
+    ${modalProps.name}\n
+    ${modalProps.bikes.cntRentable} / ${modalProps.bikes.cntRackTotal}`
   }
   return (
       <Modal
@@ -29,25 +27,7 @@ ${modalProps.bikes.cntRentable} / ${modalProps.bikes.cntRackTotal}`
       >   
       <View style={styles.centeredView}>
           <View style={styles.modalView}>
-          <Text style={styles.modalText}>{content}</Text>
-                  {/* <View flexDirection="row">
-                  <TouchableHighlight
-                      style={{ ...styles.openButton}}
-                      onPress={() => {
-                        Linking.openURL("https://www.tashu.or.kr/m/rentAction.do?process=dailyStep4")
-                      }}
-                  >
-                      <Text style={styles.textStyle}>일일권 구매</Text>    
-                  </TouchableHighlight>
-                  <TouchableHighlight
-                      style={{ ...styles.openButton}}
-                      onPress={() => {
-                        Linking.openURL("https://www.tashu.or.kr/m/rentAction.do?process=reuseStep2")
-                      }}
-                  >
-                      <Text style={styles.textStyle}>일일 재대여</Text>    
-                  </TouchableHighlight>
-                  </View> */}
+            <Text style={styles.modalText}>{content}</Text>
                   <View flexDirection="row">
                   <TouchableHighlight
                       style={{ ...styles.openButton}}
