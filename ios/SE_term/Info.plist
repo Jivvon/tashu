@@ -4,10 +4,24 @@
 <dict>
 	<key>NMFClientId</key>
 	<string>w5jlztexlm</string>
+<<<<<<< HEAD
+=======
+	<key>X-NCP-APIGW-API-KEY-ID</key>
+	<string>w5jlztexlm</string>
+	<key>X-NCP-APIGW-API-KEY</key>
+	<string>DZEcjSNfd8vCPcbEXDI68BV1hN11aq5iySt6ztL6</string>
+>>>>>>> 7b1468e42699c0e65c0aedbc21f3667ac464435c
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
 	<string>SE_term</string>
+<<<<<<< HEAD
+=======
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>nmap</string>
+	</array>
+>>>>>>> 7b1468e42699c0e65c0aedbc21f3667ac464435c
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>

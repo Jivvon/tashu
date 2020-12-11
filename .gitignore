@@ -56,6 +56,12 @@ buck-out/
 *.jsbundle
 
 # CocoaPods
+<<<<<<< HEAD
 /ios/Pods/
 
 *.backup
+=======
+ios/Pods/
+
+*.backup
+>>>>>>> 7b1468e42699c0e65c0aedbc21f3667ac464435c

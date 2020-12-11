@@ -25,6 +25,11 @@
       <meta-data
             android:name="com.naver.maps.map.w5jlztexlm"
             android:value="w5jlztexlm" />
+<<<<<<< HEAD
+=======
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+>>>>>>> 7b1468e42699c0e65c0aedbc21f3667ac464435c
     </application>
 
 </manifest>
