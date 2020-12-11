@@ -58,7 +58,8 @@ const App = () => {
     }, []);
 
     return <NavigationContainer>
-        <MapViewScreen></MapViewScreen>
+        <MapViewScreen
+            center={location}></MapViewScreen>
         {/* <Stack.Navigator>
             <Stack.Screen name="Tashu" component={HomeScreen}/>
             <Stack.Screen name="stack" component={MapViewScreen}/>

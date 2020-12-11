@@ -5,7 +5,7 @@ import { stations as stationsJson } from 'stations.json';
 import ModalView from './MarkerModal';
 import { setNaverMapLink ,useBeforeFirstRender ,openNaverMapApp, requestLocationPermission } from '../utils'
 
-const MapViewScreen = ({ navigation }) => {
+const MapViewScreen = ({ center }) => {
     const [modalVisible, setModalVisible] = useState(false);
     const [modalProps, setModalProps] = useState();
     const [start, setStart] = useState(); // FIXME: start랑 destination 합치는 게 더 나을듯
@@ -123,7 +123,7 @@ const MapViewScreen = ({ navigation }) => {
             ></ModalView>
         <NaverMapView style={{width: '100%', height: '100%'}}
                       showsMyLocationButton={true}
-                      center={{...CNU_center, zoom: 16}}
+                      center={{...center, zoom: 16}}
                     //   onTouch={e => console.warn('onTouch', JSON.stringify(e.nativeEvent))}
                     //   onCameraChange={e => console.warn('onCameraChange', JSON.stringify(e))}
                     //   onMapClick={e => console.warn('onMapClick', JSON.stringify(e))}
