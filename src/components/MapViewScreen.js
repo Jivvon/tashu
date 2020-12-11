@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, TouchableHighlight, StyleSheet, View, Linking } from "react-native";
 import NaverMapView, { Marker } from 'react-native-nmap';
 // import { stationsJson } from 'stations.json';
 import ModalView from './MarkerModal';
@@ -17,6 +17,8 @@ const MapViewScreen = ({ navigation }) => {
     const CNU_center = { latitude: 36.362178, longitude: 127.344742 }
     const [stations, setStations] = useState([]);
     const [showMarkers, setShowMarkers] = useState(false);
+    const [text, setText] = useState('');
+    const [visibleFindRouteBtn, setVisibleFindRouteBtn] = useState(false);
     
     function getStationData() {
         const TASHU_STATION_URL = "http://localhost:8080/station";
@@ -41,20 +43,11 @@ const MapViewScreen = ({ navigation }) => {
         requestLocationPermission();
     }, []);
     
-    // useEffect(() => {
-    //     // TODO: url 출발 도착으로 수정
-    //     if (start && destination) {
-    //         if (start == destination) {
-    //             setDestination();
-    //             return;
-    //         }
-    //         console.log(`출발 : ${start.name}, 도착: ${destination.name}`)
-    //         const url = "nmap://route/bicycle?slat=37.4640070&slng=126.9522394&sname=%EC%84%9C%EC%9A%B8%EB%8C%80%ED%95%99%EA%B5%90&dlat=37.5209436&dlng=127.1230074&dname=%EC%98%AC%EB%A6%BC%ED%94%BD%EA%B3%B5%EC%9B%90&appname=org.reactjs.native.example.SE-term";
-    //         setStart();
-    //         setDestination();
-    //         openNaverMapApp(url);
-    //     }
-    // }, [start, destination])
+    useEffect(() => {
+        if (start) setText(`출발: ${start.name} ${text}`)
+        if (destination) setText(`${text} 도착: ${destination.name}`)
+        if (destination) setVisibleFindRouteBtn(true)
+    }, [start, destination])
     
     const stationMarkers = stations.map((station, index) => {
             station.location = {
@@ -73,6 +66,47 @@ const MapViewScreen = ({ navigation }) => {
     })
 
     return <>
+        <View flexDirection="column" style={{ ...styles.topView }}>
+            <View>
+                <Text style={{ ...styles.textStyle, color:"black" }}>{text ? text : "출발지와 도착지를 설정해주세요"}</Text>
+            </View>
+            <View flexDirection="row" style={{ ...styles.topViewBtn}}>
+                <TouchableHighlight
+                    style={{ ...styles.openButton}}
+                    onPress={() => {
+                        Linking.openURL("https://www.tashu.or.kr/m/rentAction.do?process=dailyStep4")
+                    }}
+                >
+                    <Text style={styles.textStyle}>일일권 구매</Text>    
+                </TouchableHighlight>
+                <TouchableHighlight
+                    style={{ ...styles.openButton}}
+                    onPress={() => {
+                        Linking.openURL("https://www.tashu.or.kr/m/rentAction.do?process=reuseStep2")
+                    }}
+                >
+                    <Text style={styles.textStyle}>일일 재대여</Text>    
+                </TouchableHighlight>
+                {/* {visibleFindRouteBtn && <TouchableHighlight */}
+                {true && <TouchableHighlight
+                    style={{ ...styles.openButton, width:"100%" }}
+                    onPress={() => {
+                        setVisibleFindRouteBtn(false);
+                        const uri = {
+                            slat: start?.location.latitude,
+                            slng: start?.location.longitude,
+                            dlat: destination.location.latitude,
+                            dlng: destination.location.longitude,
+                            appname: "SE_term"
+                        };
+                                    
+                        openNaverMapApp(uri);
+                    }}
+                >
+                    <Text style={styles.textStyle}>길찾기</Text>
+                </TouchableHighlight>}
+            </View>
+        </View>
         <ModalView modalVisible={modalVisible}
             setModalVisible={setModalVisible}
             modalProps={modalProps}
@@ -100,5 +134,43 @@ const MapViewScreen = ({ navigation }) => {
         </TouchableOpacity> */}
     </>
 };
+
+
+const styles = StyleSheet.create({
+    topView: {
+        marginTop: 40,
+        marginLeft: 5,
+        minHeight: "5%",
+        // maxHeight: "10%",
+    },
+    topViewBtn: {
+        width: "57%"
+    },
+    absolute: {
+        marginTop: 50,
+    },
+    textStyle: {
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center"
+    },
+    findRouteButton: {
+        backgroundColor: "#2196F3",
+        borderRadius: 5,
+        padding: 8,
+        margin: 2,
+        width: 60,
+        elevation: 2
+    },
+    openButton: {
+        backgroundColor: "#2196F3",
+        borderRadius: 5,
+        padding: 8,
+        margin: 2,
+        // height: "100%",
+        elevation: 2
+      },
+})
+
 
 export default MapViewScreen;
