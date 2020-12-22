@@ -1,5 +1,6 @@
 package tashu.api.service;
 
+import java.util.Iterator;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -27,23 +28,25 @@ public class Station {
     }
 
     private void init() {
-        stations = new JSONArray();
+        this.stations = new JSONArray();
         JSONObject station = new JSONObject();
         station.put("address", "");
         station.put("name", "");
         station.put("kiosk_no", "");
         station.put("location", "");
         station.put("bikes", "");
-        stations.add(station);
+        this.stations.add(station);
     }
 
     protected void setData(String string) throws Exception{
         JSONParser parser = new JSONParser();
         JSONObject jsonObject = (JSONObject)parser.parse(string);
         JSONArray raw_station_info = (JSONArray) jsonObject.get("markers");
-        stations = new JSONArray();
+        this.stations = new JSONArray();
 
-        for (Object o : raw_station_info) {
+        Iterator raw_station_it = raw_station_info.iterator();
+        while (raw_station_it.hasNext()) {
+            Object o = raw_station_it.next();
             JSONObject raw_station = (JSONObject) o;
             JSONObject station = new JSONObject();
             String address = raw_station.get("gu").toString() + raw_station.get("dong").toString();

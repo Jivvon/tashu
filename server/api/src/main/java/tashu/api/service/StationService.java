@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.time.LocalDateTime;
 
-import static tashu.api.reoisitory.globalConfig.TASHU_STATION_URL;
+import static tashu.api.repository.GlobalConfig.TASHU_STATION_URL;
 
 @Service
 public class StationService {
@@ -60,13 +60,11 @@ public class StationService {
         System.setProperty("jsse.enableSNIExtension", "false");
 
         Connection conn = Jsoup.connect(TASHU_STATION_URL);
-        conn.sslSocketFactory(new CustomSSLSocketFactory());
+        CustomSSLSocketFactory.setSSL();
 
-        Document doc;
-        String docBody;
         try {
-            doc = conn.get();
-            docBody = doc.body().text();
+            Document doc = conn.get();
+            String docBody = doc.body().text();
             station.setData(docBody);
         } catch (Exception e) {
             e.printStackTrace();
