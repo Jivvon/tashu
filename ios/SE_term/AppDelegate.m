@@ -3,11 +3,8 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
-<<<<<<< HEAD
-=======
 #import <React/RCTLinkingManager.h>
 #import "RNSplashScreen.h"
->>>>>>> 7b1468e42699c0e65c0aedbc21f3667ac464435c
 
 #ifdef FB_SONARKIT_ENABLED
 #import <FlipperKit/FlipperClient.h>
@@ -48,10 +45,7 @@ static void InitializeFlipper(UIApplication *application) {
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
-<<<<<<< HEAD
-=======
   [RNSplashScreen show];
->>>>>>> 7b1468e42699c0e65c0aedbc21f3667ac464435c
   return YES;
 }
 
@@ -64,8 +58,6 @@ static void InitializeFlipper(UIApplication *application) {
 #endif
 }
 
-<<<<<<< HEAD
-=======
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
@@ -74,5 +66,4 @@ static void InitializeFlipper(UIApplication *application) {
 }
  
 
->>>>>>> 7b1468e42699c0e65c0aedbc21f3667ac464435c
 @end

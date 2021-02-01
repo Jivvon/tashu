@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const { Platform } = require('react-native');
 
 // Intl polyfill
@@ -12,6 +11,4 @@ const { Platform } = require('react-native');
 //   require('intl/locale-data/jsonp/en');
 // }
 
-=======
->>>>>>> 7b1468e42699c0e65c0aedbc21f3667ac464435c
 require('./src/index.ts');

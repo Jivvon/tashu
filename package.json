@@ -6,10 +6,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-<<<<<<< HEAD
-=======
     "preinstall": "pod install",
->>>>>>> 7b1468e42699c0e65c0aedbc21f3667ac464435c
     "test": "jest",
     "lint": "eslint ."
   },
@@ -20,26 +17,18 @@
     "@react-navigation/stack": "^5.12.6",
     "react": "16.13.1",
     "react-native": "0.63.3",
-<<<<<<< HEAD
-    "react-native-geolocation-service": "^5.0.0",
-    "react-native-gesture-handler": "^1.8.0",
-=======
     "react-native-deep-linking": "^2.2.0",
     "react-native-geolocation-service": "^5.0.0",
     "react-native-gesture-handler": "^1.8.0",
     "react-native-modal": "^11.5.6",
     "react-native-modalbox": "^2.0.2",
     "react-native-modals": "^0.19.9",
->>>>>>> 7b1468e42699c0e65c0aedbc21f3667ac464435c
     "react-native-nmap": "0.0.52",
     "react-native-reanimated": "^1.13.1",
     "react-native-safe-area-context": "^3.1.9",
     "react-native-screens": "^2.14.0",
-<<<<<<< HEAD
-=======
     "react-native-slider": "^0.11.0",
     "react-native-splash-screen": "^3.2.0",
->>>>>>> 7b1468e42699c0e65c0aedbc21f3667ac464435c
     "react-navigation": "^4.4.3",
     "styled-components": "^5.2.1"
   },

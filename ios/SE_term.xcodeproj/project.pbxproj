@@ -301,10 +301,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-<<<<<<< HEAD
-=======
 						DevelopmentTeam = KX5CS7YJKY;
->>>>>>> 7b1468e42699c0e65c0aedbc21f3667ac464435c
 						LastSwiftMigration = 1120;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -703,10 +700,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-<<<<<<< HEAD
-=======
 				DEVELOPMENT_TEAM = KX5CS7YJKY;
->>>>>>> 7b1468e42699c0e65c0aedbc21f3667ac464435c
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -734,10 +728,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-<<<<<<< HEAD
-=======
 				DEVELOPMENT_TEAM = KX5CS7YJKY;
->>>>>>> 7b1468e42699c0e65c0aedbc21f3667ac464435c
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/NMapsMap/framework",
